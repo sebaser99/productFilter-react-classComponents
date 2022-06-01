@@ -6,7 +6,7 @@ export class FilterableProductTable extends Component {
     render() {
 
         return <div className="table">
-            <h2 className="table__heading">Busca tu producto Preferido</h2>
+            <h2 className="table__heading">Search your favorite product</h2>
             {this.props.children}
         </div>
     }
