@@ -10,24 +10,60 @@ import data from './data/products.json'
 export class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchText : "",
+      isStockOnly : false
+    }
   }
   unique = (arr) => {
     return Array.from(new Set(arr));
   }
+  handleChangeStock = (value)=> {
+    this.setState({...this.state,
+                    isStockOnly: value})
+  }
+  handleChangeSearch = (search) => {
+    this.setState({ ...this.state,
+                  searchText: search})
+  }
 
   render(){
+    const dataArr = this.state.searchText.length === 0 ? data :
+        data.filter(product => (
+          product.name.toLocaleLowerCase().includes(this.state.searchText.toLocaleLowerCase())
+        ))
     const categories = data.map(product => (
       product.category
     ))
-    let categoryArr = this.unique(categories)
-    
+    const categoryArr = this.unique(categories)
+    const productsArr = this.state.isStockOnly ?  categoryArr.map(cat =>(
+                                                  {categoria: cat,
+                                                    productos: dataArr.filter(product =>(
+                                                      product.category === cat && product.stocked
+                                                    ))}))
+                                              : categoryArr.map(cat =>(
+                                                {
+                                                  categoria: cat,
+                                                  productos: dataArr.filter(product =>(
+                                                    product.category === cat
+                                                  ))
+                                                }))
 
     return <FilterableProductTable>
-              <SearchBar />
+              <SearchBar state={this.state} handleChangeSearch={this.handleChangeSearch} 
+              handleChangeStock={this.handleChangeStock} />
               <ProductTable>
-                {categoryArr.map((product, index) => ( 
-                  <ProductCategoryRow key={index}  category={product} data={data} />
-                ))}
+
+                { dataArr.length > 0 ?
+                  
+                  productsArr.map((product, index) => {
+                  if(product.productos.length > 0){
+                    return <ProductCategoryRow key={index}  category={product.categoria} data={product.productos} />
+                  } 
+                  return;
+                })
+                : <tr><td className="error" colSpan="2">No hay productos para tu búsqueda</td></tr>
+                }
               </ProductTable>
           </FilterableProductTable>
   }

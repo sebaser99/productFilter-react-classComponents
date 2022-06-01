@@ -7,19 +7,14 @@ export class ProductCategoryRow extends Component {
     }
     render() {
         const productos = this.props.data;
-        const categoria = this.props.category
-        
-        const categoryElements = productos.filter(product =>(
-            product.category === categoria
-        ))
-        
+        const categoria = this.props.category      
         return <Fragment>
                 <tr className="product__category-row">
-                    <td>{this.props.category}</td>
+                    <td colSpan="2">{categoria}</td>
                 </tr>
                 {
-                    categoryElements.map(product =>(
-                        <ProductRow key={product.name} name={product.name} price={product.price} />
+                    productos.map(product =>(
+                        <ProductRow key={product.name} name={product.name} price={product.price} stock={product.stocked} />
                     ))
                 }
           
