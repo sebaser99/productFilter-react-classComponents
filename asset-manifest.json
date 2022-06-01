@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/productFilter-react-classComponents/static/css/main.03823d9b.css",
-    "main.js": "/productFilter-react-classComponents/static/js/main.3aa41867.js",
+    "main.js": "/productFilter-react-classComponents/static/js/main.4a80626e.js",
     "index.html": "/productFilter-react-classComponents/index.html",
     "main.03823d9b.css.map": "/productFilter-react-classComponents/static/css/main.03823d9b.css.map",
-    "main.3aa41867.js.map": "/productFilter-react-classComponents/static/js/main.3aa41867.js.map"
+    "main.4a80626e.js.map": "/productFilter-react-classComponents/static/js/main.4a80626e.js.map"
   },
   "entrypoints": [
     "static/css/main.03823d9b.css",
-    "static/js/main.3aa41867.js"
+    "static/js/main.4a80626e.js"
   ]
 }
