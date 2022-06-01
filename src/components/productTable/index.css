@@ -1,0 +1,11 @@
+.product-table {
+    margin: 2rem 0;
+    border-collapse: collapse;
+    text-align: left;
+    width: 25rem;
+}
+.product-table__head th {
+    text-transform: uppercase;
+    color: rgb(43, 102, 240);
+}
+
